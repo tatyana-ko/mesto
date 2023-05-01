@@ -12,11 +12,3 @@
     line-height: 17px;
   }
 }
-
-@media screen and (max-width: 767px) {
-  .profile__description {
-    text-align: center;
-    font-size: 14px;
-    line-height: 17px;
-  }
-}
