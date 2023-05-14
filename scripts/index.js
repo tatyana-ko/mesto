@@ -140,8 +140,8 @@ initialCards.forEach((item) => {
 //Добавление карточки пользователем
 
 const formAddCard = document.querySelector(".popup__form_add-card");
-const cardName = document.querySelector(".popup__input_type_add-card_name");
-const cardLink = document.querySelector(".popup__input_type_add-card_link");
+const cardName = document.querySelector(".popup__input_type_add-card-name");
+const cardLink = document.querySelector(".popup__input_type_add-card-link");
 
 formAddCard.addEventListener("submit", (evt) => {
   evt.preventDefault();
