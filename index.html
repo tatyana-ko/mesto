@@ -26,7 +26,7 @@
         </section>
         <!-- Фотографии -->
         <section class="elements">
-          <article class="element">
+          <!-- <article class="element">
             <img src="./images/karachevsk.jpg" alt="Карачаевск" class="element__image"/>
             <div class="element__wrapper">
               <h2 class="element__description">Карачаевск</h2>
@@ -67,7 +67,7 @@
             <h2 class="element__description">Карачаево-Черкесия</h2>
             <button class="element__button-like"></button>
             </div>
-          </article>
+          </article> -->
         </section>
       </main>
       <!-- Footer -->
@@ -75,7 +75,8 @@
         <p class="footer__copyright">&#169; 2023 Mesto Russia</p>
       </footer>
       <!-- Popup -->
-      <div class="popup">
+      <!-- Попап "редактирование профиля" -->
+      <div class="popup popup_type_profile">
         <div class="popup__container">
           <button class="popup__button-close" type="button"></button>
           <h2 class="popup__container-title">Редактировать профиль</h2>
@@ -84,9 +85,38 @@
           <input type="text" name="about" class="popup__input popup__input_type_about" placeholder="Вид деятельности">
           <button class="popup__button-save" type="submit">Сохранить</button>  
         </form>
-         
         </div>
       </div>
+      <!-- Попап "добавления карточки" -->
+      <div class="popup popup_type_add-card">
+        <div class="popup__container">
+          <button class="popup__button-close" type="button"></button>
+          <h2 class="popup__container-title">Новое место</h2>
+          <form class="popup__form popup__form_add-card" name="add-card_form">
+          <input type="text" name="add-card_name" class="popup__input popup__input_type_add-card_name" placeholder="Название">
+          <input type="text" name="add-card_link" class="popup__input popup__input_type_add-card_link" placeholder="Ссылка на картинку">
+          <button class="popup__button-save" type="submit">Создать</button>  
+        </div>
+      </div>
+      <!-- Попап открытия картинки в полном размере -->
+      <div class="popup popup_type_full-image">
+        <div class="popup__image-container">
+          <button class="popup__button-close" type="button"></button>
+          <img class="popup__full-image" src="" alt="">
+          <h2 class="popup__image-title"></h2>
+        </div>
+      </div>
+      <!-- Template -->
+      <template class="template-card">
+        <article class="element">
+          <button class="element__delete" type="button"></button>
+          <img src="" alt="" class="element__image"/>
+          <div class="element__wrapper">
+            <h2 class="element__description"></h2>
+            <button class="element__button-like" type="button"></button>
+          </div>
+        </article>
+      </template>
     </div>
     <script src="./scripts/index.js"></script>
   </body>
