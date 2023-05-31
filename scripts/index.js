@@ -16,6 +16,7 @@ const popupImage = popupFullImage.querySelector(".popup__full-image");
 const popupTitle = popupFullImage.querySelector(".popup__image-title");
 //Добавление карточки пользователем
 const formAddCard = document.querySelector(".popup__form_add-card");
+const createCardButton = formAddCard.querySelector(".popup__button-save");
 const cardName = document.querySelector(".popup__input_type_add-card-name");
 const cardLink = document.querySelector(".popup__input_type_add-card-link");
 const popups = document.querySelectorAll(".popup");
@@ -149,6 +150,7 @@ formAddCard.addEventListener("submit", (evt) => {
   cardsContainer.prepend(createNewCard(newCardData));
 
   closePopup(popupAddCard);
+  disableSubmitButton(createCardButton, objectForValidations);
 
   formAddCard.reset();
 });

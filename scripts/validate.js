@@ -43,15 +43,23 @@ const hasInvalidInput = (inputList) => {
   })
 }; 
 
+const enableSubmitButton = (buttonElement, validationObject) => {
+  buttonElement.removeAttribute('disabled');
+  buttonElement.classList.remove(validationObject.inactiveButtonClass);
+}
+
+const disableSubmitButton = (buttonElement, validationObject) => {
+  buttonElement.setAttribute('disabled', true);
+  buttonElement.classList.add(validationObject.inactiveButtonClass);
+}
+
 //Функция для включения/выключения кнопки
 
 const toggleButtonState = (inputList, buttonElement, validationObject) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.setAttribute('disabled', true);
-    buttonElement.classList.add(validationObject.inactiveButtonClass);
+    disableSubmitButton(buttonElement, validationObject);
   } else {
-    buttonElement.removeAttribute('disabled');
-    buttonElement.classList.remove(validationObject.inactiveButtonClass);
+    enableSubmitButton(buttonElement, validationObject);
   }
 }; 
 
