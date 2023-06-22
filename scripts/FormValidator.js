@@ -78,4 +78,10 @@ export class FormValidator {
     });
     this._setEventListeners();
   }
+
+  fieldUpdateMethod() {
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
+  }
 }

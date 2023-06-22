@@ -1,5 +1,24 @@
-import {Card} from './Card.js'
-import { FormValidator } from './FormValidator.js';
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+import { initialCards } from "./cards.js";
+import {
+  objectForValidations,
+  cardsContainer,
+  profileEditButton,
+  popupEdit,
+  closeButtons,
+  formElementProfile,
+  nameInput,
+  jobInput,
+  profileName,
+  profileAbout,
+  addCardButton,
+  popupAddCard,
+  formAddCard,
+  cardName,
+  cardLink,
+  popups,
+} from "./constants.js";
 
 //Валидация форм
 const profileFormValidator = new FormValidator(objectForValidations, popupEdit);
@@ -8,12 +27,19 @@ const addCardFormValidator = new FormValidator(objectForValidations, popupAddCar
 profileFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
 
+//Функция создания экземпляра класса Card
+
+function createNewCard(cardData) {
+  const card = new Card(cardData, ".template-card").generateCard();
+
+  return card;
+}
+
 //Добавление карточек из массива
 
 initialCards.forEach((cardData) => {
-  const card = new Card(cardData, '.template-card').generateCard();
-  cardsContainer.append(card);
-})
+  cardsContainer.append(createNewCard(cardData));
+});
 
 //Общая функция открытия
 
@@ -61,12 +87,16 @@ function handleFormSubmitProfile(evt) {
 profileEditButton.addEventListener("click", () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileAbout.textContent;
+
+  profileFormValidator.fieldUpdateMethod();
   openPopup(popupEdit);
 });
 
 formElementProfile.addEventListener("submit", handleFormSubmitProfile);
 
 addCardButton.addEventListener("click", () => {
+  addCardFormValidator.fieldUpdateMethod();
+  formAddCard.reset();
   openPopup(popupAddCard);
 });
 
@@ -84,9 +114,8 @@ formAddCard.addEventListener("submit", (evt) => {
   evt.preventDefault();
 
   const newCardData = { link: cardLink.value, name: cardName.value };
-  
-  const card = new Card(newCardData, '.template-card').generateCard();
-  cardsContainer.prepend(card);
+
+  cardsContainer.prepend(createNewCard(newCardData));
 
   closePopup(popupAddCard);
 

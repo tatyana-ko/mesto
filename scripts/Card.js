@@ -1,6 +1,7 @@
 //Код класса Card
 
 import { openPopup } from "./index.js";
+import { popupFullImage, popupImage, popupTitle } from "./constants.js";
 
 export class Card {
   constructor(cardData, templateSelector) {
@@ -59,6 +60,7 @@ export class Card {
 
   _handleDeleteCard() {
     this._element.remove();
+    this._element = null;
   }
 
   _handleOpenPopup() {
