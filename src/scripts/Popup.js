@@ -3,18 +3,19 @@ export default class Popup {
     this._popup = document.querySelector(popupSelector);
     this._closeButton = this._popup.querySelector('.popup__button-close');
     this._handleEscClose = this._handleEscClose.bind(this);
-    this._hadleOverlayClick = this._hadleOverlayClick.bind(this);
+    this._handleOverlayClick = this._handleOverlayClick.bind(this);
   }
 
   open() {
     this._popup.classList.add("popup_opened");
     window.addEventListener("keydown", this._handleEscClose);
-    window.addEventListener('click', this._hadleOverlayClick);
+    window.addEventListener('click', this._handleOverlayClick);
   } //метод, отвечающий за открытие попапа
 
   close() {
     this._popup.classList.remove("popup_opened");
     window.removeEventListener("keydown", this._handleEscClose);
+    window.removeEventListener('click', this._handleOverlayClick);
   } //метод, отвечающий за закрытие попапа
 
   _handleEscClose(evt) {
@@ -23,7 +24,7 @@ export default class Popup {
       }
   } 
 
-  _hadleOverlayClick(evt) {
+  _handleOverlayClick(evt) {
     if (evt.target === this._popup) {
       this.close();
     }
@@ -31,11 +32,5 @@ export default class Popup {
 
   setEventListeners() {
     this._closeButton.addEventListener('click', this.close.bind(this));
-    
-    this._popup.addEventListener('click', (evt) => {
-      if (evt.target.classList.contains('.popup_opened')) {
-          this.close();
-      }
-  });
   }
 }
