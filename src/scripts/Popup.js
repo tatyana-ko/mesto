@@ -3,11 +3,13 @@ export default class Popup {
     this._popup = document.querySelector(popupSelector);
     this._closeButton = this._popup.querySelector('.popup__button-close');
     this._handleEscClose = this._handleEscClose.bind(this);
+    this._hadleOverlayClick = this._hadleOverlayClick.bind(this);
   }
 
   open() {
     this._popup.classList.add("popup_opened");
     window.addEventListener("keydown", this._handleEscClose);
+    window.addEventListener('click', this._hadleOverlayClick);
   } //метод, отвечающий за открытие попапа
 
   close() {
@@ -20,6 +22,12 @@ export default class Popup {
         this.close();
       }
   } 
+
+  _hadleOverlayClick(evt) {
+    if (evt.target === this._popup) {
+      this.close();
+    }
+  }
 
   setEventListeners() {
     this._closeButton.addEventListener('click', this.close.bind(this));

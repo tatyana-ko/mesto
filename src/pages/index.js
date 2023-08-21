@@ -2,7 +2,6 @@ import '../pages/index.css';
 
 import { Card } from "../scripts/Card.js";
 import { FormValidator } from "../scripts/FormValidator.js";
-// import { Popup } from "./Popup.js";
 import PopupWithForm from "../scripts/PopupWithForm.js";
 import PopupWithImage from "../scripts/PopupWithImage.js";
 import Section from "../scripts/Section.js";
@@ -16,8 +15,6 @@ import {
   profileAbout,
   addCardButton,
   popupAddCard,
-  cardName,
-  cardLink,
 } from "../scripts/constants.js";
 
 //Валидация форм (FormValidator)
@@ -50,17 +47,27 @@ const section = new Section(
 
 section.renderItems();
 
-// Добавление карточки от пользователя
+//Функция создания экземпляра класса Card
 
-function addCard() {
-  const newCardData = { link: cardLink.value, name: cardName.value };
-  section.addItem(createNewCard(newCardData));
-  newCardPopupForm.close();
-  addCardFormValidator.disableSubmitButton();
+function createNewCard(cardData) {
+  const card = new Card(
+    cardData,
+    ".template-card",
+    handleCardClick
+  ).generateCard();
+
+  return card;
 }
+
+// Добавление карточки от пользователя
 
 const newCardPopupForm = new PopupWithForm(".popup_type_add-card", addCard);
 newCardPopupForm.setEventListeners();
+
+function addCard(values) {
+  section.addItem(createNewCard(values));
+  newCardPopupForm.close();
+}
 
 // Редактирование профиля
 const userInformation = new UserInfo({
@@ -85,20 +92,9 @@ profileEditButton.addEventListener("click", () => {
   profileFormValidator.disableSubmitButton();
 });
 
-//Функция создания экземпляра класса Card
-
-function createNewCard(cardData) {
-  const card = new Card(
-    cardData,
-    ".template-card",
-    handleCardClick
-  ).generateCard();
-
-  return card;
-}
-
 // Слушатель для кнопки добавления карточки на страницу
 addCardButton.addEventListener("click", () => {
   newCardPopupForm.open();
-  addCardFormValidator.fieldUpdateMethod();
+  addCardFormValidator.updateFieldMethod();
+  addCardFormValidator.disableSubmitButton();
 });
