@@ -7,6 +7,7 @@ const nameInput = formElementProfile.querySelector(".popup__input_type_name");
 const jobInput = formElementProfile.querySelector(".popup__input_type_about");
 const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__description");
+const saveButton = document.querySelector(".popup__button-save");
 //Для формы добавления карточки
 const addCardButton = document.querySelector(".profile__add-button");
 const popupAddCard = document.querySelector(".popup_type_add-card");
@@ -21,6 +22,11 @@ const cardName = document.querySelector(".popup__input_type_add-card-name");
 const cardLink = document.querySelector(".popup__input_type_add-card-link");
 const popups = document.querySelectorAll(".popup");
 const cardsContainer = document.querySelector(".elements");
+//Изменение аватара
+const popupAddNewAvatar = document.querySelector(".popup_type_update-avatar");
+const avatarUpdateButton = document.querySelector(".profile__avatar-button");
+//Попап для подтверждения удаления карточки
+const confirmPopup = document.querySelector(".popup_type_delete-card")
 
 const objectForValidations = {
   formSelector: ".popup__form",
@@ -51,4 +57,8 @@ export {
   cardName,
   cardLink,
   popups,
+  popupAddNewAvatar,
+  confirmPopup,
+  avatarUpdateButton,
+  saveButton,
 };

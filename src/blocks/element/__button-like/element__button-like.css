@@ -1,6 +1,6 @@
 .element__button-like {
   padding: 0;
-  margin: 5px 5px 1px auto;
+  margin-bottom: 3px;
   background-image: url(../../../images/Vector.svg);
   background-color: transparent;
   background-position: center;

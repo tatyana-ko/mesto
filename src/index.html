@@ -16,7 +16,8 @@
       <main class="main">
         <!-- Профиль -->
         <section class="profile">
-          <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар" class="profile__avatar"/>
+          <img src="#" alt="Аватар" class="profile__avatar"/>
+          <button class="profile__avatar-button"></button>
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button class="profile__edit-button" type="button"></button>
@@ -62,6 +63,7 @@
             <span class="card-link-error popup__span popup__form-error"></span>
             
             <button class="popup__button-save button-hover" type="submit">Создать</button>
+
           </form>  
         </div>
       </div>
@@ -73,6 +75,30 @@
           <h2 class="popup__image-title"></h2>
         </div>
       </div>
+      <!-- Попап удаления карточки -->
+      <div class="popup popup_type_delete-card">
+        <div class="popup__container">
+          <button class="popup__button-close" type="button"></button>
+          <h2 class="popup__container-title">Вы уверены?</h2>
+          <form class="popup__form popup__form_delete-card" name="delete-card_form">
+            <button class="popup__button-save button-hover popup__button_delete" type="submit">Да</button>
+          </form>
+        </div>
+      </div>
+      <!-- Попап обновления аватара пользователя -->
+      <div class="popup popup_type_update-avatar">
+        <div class="popup__container">
+          <button class="popup__button-close" type="button"></button>
+          <h2 class="popup__container-title">Обновить аватар</h2>
+          <form class="popup__form popup__form_update-avatar" name="update-avatar_form" novalidate>
+
+            <input id="avatar-link" type="url" name="avatar" class="popup__input popup__input_type_avatar-link" placeholder="Ссылка на аватар" required>
+            <span class="avatar-link-error popup__span popup__form-error"></span>
+
+            <button class="popup__button-save button-hover" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
       <!-- Template -->
       <template class="template-card">
         <article class="element">
@@ -80,7 +106,10 @@
           <img src="#" alt="#" class="element__image"/>
           <div class="element__wrapper">
             <h2 class="element__description"></h2>
-            <button class="element__button-like" type="button"></button>
+            <div class="element__likes">
+              <button class="element__button-like" type="button"></button>
+              <span class="element__number-likes"></span>
+            </div>
           </div>
         </article>
       </template>

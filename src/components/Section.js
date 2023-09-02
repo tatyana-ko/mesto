@@ -1,12 +1,11 @@
 export default class Section {
-  constructor({items, renderer} , containerSelector) {
-    this._items = items; //items - массив данных, которые нужно добавить на страницу при инициализации класса
+  constructor({renderer} , containerSelector) {
     this._renderer = renderer; //renderer - функция, которая отвечает за создание и отрисовку данных на странице
     this._container = document.querySelector(containerSelector);
   }
 
-  renderItems() {
-    this._items.forEach(item => this._renderer(item));
+  renderItems(items) {
+    items.forEach(item => this._renderer(item));
   }// метод, который отвечает за отрисовку всех элементов
 
   addItem(element) {
