@@ -78,7 +78,7 @@ export class Card {
   //Проверка лайка от текущего пользователя
   isLiked()  {
     return this._likes.some((card) => {
-        return card._id === this._userId
+        return card._id === this._userId;
     })
 }
 
